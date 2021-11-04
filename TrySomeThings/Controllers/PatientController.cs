@@ -76,7 +76,16 @@ namespace TrySomeThings.Controllers
         [Route("GetPatient")]
         public Patient GetPatient(long IdentityNo) {
             var result = _PatientRepository.Get(g=>g.IdentityNo == IdentityNo);
-            return result;
+            if (result != null)
+            {
+                return result;
+            }
+            else
+            {
+                //null veri koşulu yaz
+                return result;
+            }
+            
         }
         [HttpGet]
         [Route("GetPatientList")]
