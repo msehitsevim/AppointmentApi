@@ -16,7 +16,7 @@ namespace Ts.DAL.Entities
         public Guid Id { get; set; }
         public long IdentityNo { get; set; }
         public string Name { get; set; }
-        public string Surname { get; set; }
+        public string Sirname { get; set; }
         public int Age { get; set; }
         public string Address { get; set; }
         public string Telephone { get; set; }

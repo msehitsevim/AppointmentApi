@@ -27,6 +27,7 @@ namespace TrySomeThings
             services.AddScoped<MsSqlRepository<Patient>>();
             services.AddScoped<MsSqlRepository<Appointment>>();
             services.AddControllers();
+            services.AddCors();
             services.AddDbContext<MsDbContext>(opt => 
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("MsDbAddress"), y => y.MigrationsAssembly("TrySomeThings"));
@@ -48,7 +49,13 @@ namespace TrySomeThings
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TrySomeThings v1"));
             }
-
+            app.UseCors(cors =>
+            {
+                cors
+                 .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin();
+            });
             app.UseHttpsRedirection();
 
             app.UseRouting();

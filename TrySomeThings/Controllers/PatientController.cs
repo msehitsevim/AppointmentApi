@@ -10,7 +10,7 @@ using Ts.DAL;
 namespace TrySomeThings.Controllers
 {
     [ApiController]
-    [Route("Patient")]
+    [Route("api")]
     public class PatientController : ControllerBase
     {
         private readonly ILogger<PatientController> _logger;
