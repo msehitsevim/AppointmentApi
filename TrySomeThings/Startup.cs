@@ -36,7 +36,7 @@ namespace TrySomeThings
           
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TrySomeThings", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppointmentServices", Version = "v1" });
             });
         }
 
