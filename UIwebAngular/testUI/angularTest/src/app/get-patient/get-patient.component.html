@@ -6,34 +6,40 @@
                 <label class="form-label required" for="IdentityNo">IdentityNo</label>
                 <input type="number" id="IdentityNo" name="IdentityNo" class="form-control" autocomplete="off" ngModel required>
             </div>
-            <div class="col-6 col-sm-4 col-md-2 col-xl mb-3">
-                <input type="submit" value="Save" id="SaveBtn" class="btn btn-info active w-100">
+            <div class="col-6 col-sm-4 col-md-4 col-xl mb-3">
+                <input type="submit" value="Get Patient" id="SaveBtn" class="btn btn-info active w-100">
             </div>
         </form>
     </div>
-    <ul *ngFor="let patient of Patients">
-       <li>
-           Id : {{patient.Id}}
-       </li>
-        <li >
-            Name: {{patient.Name}}
-        </li>
-        <li>
-             Sirname: {{patient.Sirname}}
-        </li>
-        <li>    
-            Age: {{patient.Age}}
-        </li>
-        <li>
-            IdentityNo: {{patient.IdentityNo}}
-        </li>
-        <li>
-            Telephone: {{patient.Telephone}}
-        </li>
-        <li>
-            Address: {{patient.Address}}
-        </li>
-        <li>
-            
-        </li>
-    </ul>
+    <select >
+    <option *ngFor="let occupation of test" 
+            [value]="occupation">
+        {{occupation}}
+    </option>
+</select>
+    <div class="col-md-3" style="margin-left:2%;margin-top:2%">   
+        <ul  *ngFor="let t of test">
+            <li>
+                {{t.Id}}
+            </li>
+             <li >
+                {{t.Name}}
+             </li>
+             <li>
+                  {{t.Sirname}}
+             </li>
+             <li>    
+                  {{t.Age}}
+             </li>
+             <li>
+                  {{t.IdentityNo}}
+             </li>
+             <li>
+                 {{t.Telephone}}
+             </li>
+             <li>
+                {{t.Address}}
+             </li>
+         </ul>
+    </div>
+   
