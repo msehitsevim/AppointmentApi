@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Ts.DAL;
 using Ts.DAL.Entities;
 
-namespace TrySomeThings.Controllers
+namespace BaseProject.Controllers
 {
     [ApiController]
     [Route("Appointment")]
@@ -23,9 +23,9 @@ namespace TrySomeThings.Controllers
             try
             {
                 appointment.Id = Guid.NewGuid();
-               
+
                 _AppointmentRepository.Insert(appointment);
-               
+
                 return "success";
             }
             catch (Exception) { throw; }
@@ -36,7 +36,7 @@ namespace TrySomeThings.Controllers
         {
             try
             {
-                _AppointmentRepository.Delete(d=>d.Id == Id);
+                _AppointmentRepository.Delete(d => d.Id == Id);
                 return "success";
             }
             catch (Exception)

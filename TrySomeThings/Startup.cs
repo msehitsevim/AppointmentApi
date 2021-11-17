@@ -1,17 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Newtonsoft.Json.Serialization;
 using Ts.DAL;
 using Ts.DAL.Entities;
 
-namespace TrySomeThings
+namespace BaseProject
 {
     public class Startup
     {
@@ -38,7 +35,7 @@ namespace TrySomeThings
             services.AddCors();
             services.AddDbContext<MsDbContext>(opt =>
             {
-                opt.UseSqlServer(Configuration.GetConnectionString("MsDbAddress"), y => y.MigrationsAssembly("TrySomeThings"));
+                opt.UseSqlServer(Configuration.GetConnectionString("MsDbAddress"), y => y.MigrationsAssembly("BaseProject"));
             });
 
 
@@ -55,7 +52,7 @@ namespace TrySomeThings
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TrySomeThings v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BaseProject v1"));
             }
             app.UseCors(cors =>
             {

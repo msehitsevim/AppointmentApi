@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
-namespace TrySomeThings.Migrations
+namespace BaseProject.Migrations
 {
     public partial class MyFirstMigration : Migration
     {

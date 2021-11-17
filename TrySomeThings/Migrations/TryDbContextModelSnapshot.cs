@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Ts.DAL;
 
-namespace TrySomeThings.Migrations
+namespace BaseProject.Migrations
 {
     [DbContext(typeof(MsDbContext))]
     partial class TryDbContextModelSnapshot : ModelSnapshot

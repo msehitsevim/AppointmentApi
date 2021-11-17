@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Ts.DAL;
 
-namespace TrySomeThings.Migrations
+namespace BaseProject.Migrations
 {
     [DbContext(typeof(MsDbContext))]
     [Migration("20211103105712_mig_2")]

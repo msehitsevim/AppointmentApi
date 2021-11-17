@@ -2,22 +2,22 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using Ts.DAL.Entities;
 using Ts.DAL;
+using Ts.DAL.Entities;
 
-namespace TrySomeThings.Controllers
+namespace BaseProject.Controllers
 {
     [ApiController]
     [Route("api")]
     public class PatientController : ControllerBase
     {
         private readonly ILogger<PatientController> _logger;
-        private readonly MsSqlRepository<Patient> _PatientRepository;     
+        private readonly MsSqlRepository<Patient> _PatientRepository;
         public PatientController(ILogger<PatientController> logger, MsSqlRepository<Patient> PatientRepository)
         {
             _logger = logger;
             _PatientRepository = PatientRepository;
-            
+
         }
         [HttpPost]
         [Route("AddPatient")]
@@ -38,7 +38,7 @@ namespace TrySomeThings.Controllers
                     _logger.LogInformation(message);
                     return "success";
                 }
-                
+
             }
             catch (Exception) { throw; }
         }
@@ -53,7 +53,7 @@ namespace TrySomeThings.Controllers
             }
             catch (Exception)
             {
-               
+
                 throw;
             }
 
@@ -68,20 +68,22 @@ namespace TrySomeThings.Controllers
                 return "success";
             }
             catch (Exception)
-            {  
-                throw ;
+            {
+                throw;
             }
         }
         [HttpGet]
         [Route("AllPatient")]
-        public IEnumerable<Patient> AllPatient(){
+        public IEnumerable<Patient> AllPatient()
+        {
             var PatientsList = _PatientRepository.GetAll();
             return PatientsList;
         }
         [HttpGet]
         [Route("GetPatient")]
-        public Patient GetPatient(long IdentityNo) {
-            var result = _PatientRepository.Get(g=>g.IdentityNo == IdentityNo);
+        public Patient GetPatient(long IdentityNo)
+        {
+            var result = _PatientRepository.Get(g => g.IdentityNo == IdentityNo);
             if (result != null)
             {
                 return result;
@@ -91,13 +93,14 @@ namespace TrySomeThings.Controllers
                 //null veri koşulu yaz
                 return result;
             }
-            
+
         }
         [HttpGet]
         [Route("GetPatientList")]
-        public IEnumerable<Patient> GetPatientList(long Identityno) {
+        public IEnumerable<Patient> GetPatientList(long Identityno)
+        {
             var resultList = _PatientRepository.GetList(l => l.IdentityNo == Identityno);
             return resultList;
-        }    
+        }
     }
 }
