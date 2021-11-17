@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { crudService } from '../Services/service';
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
@@ -7,13 +7,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddPatientComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private addPatient: crudService) { }
 
   ngOnInit(): void {
   }
   onSubmit(data : any){
-    console.warn(data);
-    
-    this.http.post('https://localhost:44334/api/AddPatient',data).subscribe((result)=>{console.warn("result",result)});
+
+    this.addPatient.addMethod(data).subscribe((result)=>{console.warn("result",result)});
+
   }
 }

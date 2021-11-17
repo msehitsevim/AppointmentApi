@@ -3,10 +3,13 @@ export interface patient{
     Name: string;
     Sirname: string;
     Age: number;
-    IdentityNo: BigInt;
-    Telephone: BigInt;
+    IdentityNo: number;
+    Telephone: number;
     Address: string;
   }
+
+
+
 
   export interface SearchResults {
     total: number;

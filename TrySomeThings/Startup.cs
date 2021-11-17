@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 using Ts.DAL;
 using Ts.DAL.Entities;
 
@@ -27,13 +28,20 @@ namespace TrySomeThings
             services.AddScoped<MsSqlRepository<Patient>>();
             services.AddScoped<MsSqlRepository<Appointment>>();
             services.AddControllers();
+            services.AddControllers()
+           .AddJsonOptions(options =>
+              options.JsonSerializerOptions.PropertyNamingPolicy = null);
+            //services
+            //    .AddMvc()
+            //    .AddJsonOptions(opt => opt.JsonSerializerOptions.ContractResolver
+            //        = new DefaultContractResolver());
             services.AddCors();
-            services.AddDbContext<MsDbContext>(opt => 
+            services.AddDbContext<MsDbContext>(opt =>
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("MsDbAddress"), y => y.MigrationsAssembly("TrySomeThings"));
             });
-           
-          
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AppointmentServices", Version = "v1" });

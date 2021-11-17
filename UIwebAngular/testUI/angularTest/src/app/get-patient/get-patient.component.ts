@@ -1,36 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Data, Params } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Validators } from '@angular/forms';
 import { patient } from '../models/patient';
+import { crudService } from '../Services/service'
 
 @Component({
   selector: 'app-get-patient',
   templateUrl: './get-patient.component.html',
-  styleUrls: ['./get-patient.component.css']
+  styleUrls: ['./get-patient.component.css'],
+
 })
-export class GetPatientComponent  {
-   
- // Patients:any;
-  test: Array<any>;
-  constructor(private http : HttpClient) {  this.test = new Array<any>()}
-  
-
-  onSubmit(data:any){
-    
-    console.warn(data);
-    //const headers = { 'Authorization': 'Bearer my-token', 'My-Custom-Header': 'foobar' }
-    const _httpHeaders = new HttpHeaders();
-    _httpHeaders.append('content-type','application/json');
-    this.http.get<patient[]>('https://localhost:44334/api/GetPatient',{headers:_httpHeaders,params:data})
-    .subscribe((result)=>{
-      console.warn(result);
-
-      this.test = result;
-      console.warn(this.test);
-     
-  });
-    
+export class GetPatientComponent implements OnInit {
+  public reqMessage : any;
+  public Patients: Array<patient> = [];
+  loading: boolean = false;
+  errorMessage : any;
+  constructor(private crudMethods : crudService) {
   }
+  getPatient(data:any){
+    this.crudMethods.getMethod(data)
+        .subscribe({next : response =>  {
+             this.Patients.push(response);
+           },error: error=>{
+             console.error('Request failed with error')
+             this.errorMessage = error;
+             this.loading = false;
+           }
+        })
+  }
+  setPatient(){
+    this.crudMethods.setMethod(this.Patients[0]).subscribe(
+      { next: res => {
+          this.reqMessage = res;
+        }, error: error=>{
+          console.error('Update failed with error')
+          console.log('error:',error)
+          this.errorMessage = error;
+          this.loading = false;
+        }
+      }
+    );
+}
+  ngOnInit(): void { }
 }
 

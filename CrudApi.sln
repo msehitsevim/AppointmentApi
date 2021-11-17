@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrySomeThings", "TrySomeThings\TrySomeThings.csproj", "{A9B40063-29E9-4A30-A01A-6425CF971E73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseProject", "TrySomeThings\BaseProject.csproj", "{A9B40063-29E9-4A30-A01A-6425CF971E73}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ts.DAL", "Ts.DAL\Ts.DAL.csproj", "{FC9D5054-ACCA-4E4E-9731-129A815BC63D}"
 EndProject

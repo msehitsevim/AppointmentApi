@@ -23,14 +23,22 @@ namespace TrySomeThings.Controllers
         [Route("AddPatient")]
         public string AddPatient(Patient patient)
         {
-
+            var temp = GetPatient(patient.IdentityNo);
             try
             {
-                patient.Id = Guid.NewGuid();
-                var message = $"About page visited at {DateTime.UtcNow.ToLongTimeString()}";
-                _PatientRepository.Insert(patient);
-                _logger.LogInformation(message);
-                return "success";
+                if (temp != null)
+                {
+                    return "Already Exist Patient";
+                }
+                else
+                {
+                    patient.Id = Guid.NewGuid();
+                    var message = $"About page visited at {DateTime.UtcNow.ToLongTimeString()}";
+                    _PatientRepository.Insert(patient);
+                    _logger.LogInformation(message);
+                    return "success";
+                }
+                
             }
             catch (Exception) { throw; }
         }

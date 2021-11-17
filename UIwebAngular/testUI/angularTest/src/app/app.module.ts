@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GetPatientComponent } from './get-patient/get-patient.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
+
 @NgModule({
   declarations: [
     AppComponent,
