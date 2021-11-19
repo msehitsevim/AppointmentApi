@@ -13,7 +13,7 @@
     </div>
     <div  class="col-md-7" style="margin-left:2%;margin-top:2%">
 
-            <div  *ngFor="let pat of Patients">
+            <!-- <div  *ngFor="let pat of Patients">
                 <h1>Patient Information</h1>
                 <form #updateData="ngForm" (ngSubmit)="setPatient()">
                     <div *ngIf="pat.Id == '' ">Kayıt Yok</div>
@@ -28,17 +28,21 @@
                       <input type="submit" value="Set Patient" class="btn btn-info active ">
                     </div>
                 </form>
-            </div>
-            <!-- <div *ngIf="Patients[0] != null ">
+            </div> -->
+            <div *ngIf="Patients != null ">
+              <form #updateData="ngForm" (ngSubmit)="setPatient()">
               <h1>Patient Information</h1>
-                  <input type="number" [(ngModel)]="Patients[0].IdentityNo" name="IdentityNo" value="{{Patients[0].IdentityNo}}" placeholder="IdentityNo:" required/>
-                  <input type="text" [(ngModel)]="Patients[0].Name" name="Name" value="{{Patients[0].Name}}" placeholder="Name:" required/>
-                  <input type="text" [(ngModel)]="Patients[0].Sirname" name="Sirname" value="{{Patients[0].Sirname}}" placeholder="Sirname:" required/>
-                  <input type="number" [(ngModel)]="Patients[0].Age" name="Age" value="{{Patients[0].Age}}" placeholder="Age:" required/>
-                  <input type="tel" [(ngModel)]="Patients[0].Telephone" name="Telephone" value="{{Patients[0].Telephone}}" placeholder="Telephone:" required/>
-                  <input type="text" [(ngModel)]="Patients[0].Address" name="Address" value="{{Patients[0].Address}}" placeholder="Address:" required/>
-
-             </div> -->
+                  <input type="number" [(ngModel)]="Patients.IdentityNo" name="IdentityNo" value="{{Patients.IdentityNo}}" placeholder="IdentityNo:" required/>
+                  <input type="text" [(ngModel)]="Patients.Name" name="Name" value="{{Patients.Name}}" placeholder="Name:" required/>
+                  <input type="text" [(ngModel)]="Patients.Sirname" name="Sirname" value="{{Patients.Sirname}}" placeholder="Sirname:" required/>
+                  <input type="number" [(ngModel)]="Patients.Age" name="Age" value="{{Patients.Age}}" placeholder="Age:" required/>
+                  <input type="tel" [(ngModel)]="Patients.Telephone" name="Telephone" value="{{Patients.Telephone}}" placeholder="Telephone:" required/>
+                  <input type="text" [(ngModel)]="Patients.Address" name="Address" value="{{Patients.Address}}" placeholder="Address:" required/>
+                  <div class="text-center">
+                    <input type="submit" value="Set Patient" class="btn btn-info active ">
+                  </div>
+                </form>
+             </div>
 
 
 

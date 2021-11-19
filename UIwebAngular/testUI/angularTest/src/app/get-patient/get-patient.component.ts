@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { patient } from '../models/patient';
+
+
 import { crudService } from '../Services/service'
 
 @Component({
@@ -11,7 +11,8 @@ import { crudService } from '../Services/service'
 })
 export class GetPatientComponent implements OnInit {
   public reqMessage : any;
-  public Patients: Array<patient> = [];
+ // public Patients: Array<patient> = [];
+  public Patients: any;
   loading: boolean = false;
   errorMessage : any;
   constructor(private crudMethods : crudService) {
@@ -19,7 +20,8 @@ export class GetPatientComponent implements OnInit {
   getPatient(data:any){
     this.crudMethods.getMethod(data)
         .subscribe({next : response =>  {
-             this.Patients.push(response);
+           //  this.Patients.push(response);
+           this.Patients = response;
            },error: error=>{
              console.error('Request failed with error')
              this.errorMessage = error;
@@ -28,9 +30,10 @@ export class GetPatientComponent implements OnInit {
         })
   }
   setPatient(){
-    this.crudMethods.setMethod(this.Patients[0]).subscribe(
+    this.crudMethods.setMethod(this.Patients).subscribe(
       { next: res => {
           this.reqMessage = res;
+          console.log("res:",res);
         }, error: error=>{
           console.error('Update failed with error')
           console.log('error:',error)
@@ -39,7 +42,7 @@ export class GetPatientComponent implements OnInit {
         }
       }
     );
-}
+  }
   ngOnInit(): void { }
 }
 
